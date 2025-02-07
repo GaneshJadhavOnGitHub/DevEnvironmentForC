@@ -1,0 +1,22 @@
+@echo off
+
+REM ---------------------------------------------------------------------------------------------------------------
+REM Author : Ganesh K Jadhav
+REM Date : February 06, 2025.
+REM Version : 1.0.0
+REM Description : Small batch script to create the 'c_programs' directory and 'history' directory for .zsh_history file.
+REM ---------------------------------------------------------------------------------------------------------------
+
+REM Take back-up of previous history and c_programs directory before building new image.
+
+REM Create the required directories and file.
+REM 'history' directory is mounted to c devcontainer and used to store .zsh_history file.
+REM 'c_programs' directory is also mounted to c devcontainer and used to store c programs persistently on host.
+
+mkdir ..\history
+mkdir ..\c_programs
+
+REM Create .zsh_history file in the 'history' directory. This file is used to store zsh command history persistently.
+echo. > ..\history\.zsh_history
+
+echo History file and 'c_programs' directory created successfully!

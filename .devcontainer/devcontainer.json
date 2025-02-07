@@ -1,0 +1,62 @@
+/*
+# Tested on Feb , 2025 - Working 
+# Author : Ganesh K Jadhav
+# Date : February 06  to February 07, 2025.
+# Version : 1.0.0
+# Description : C devcontainer for c programming.
+*/
+{
+    // Name for the dev container, this name displays in the UI.
+    "name": "cdevlopmentenvironment",
+	//Specify compose file to be used.
+    "dockerComposeFile": "./docker-compose.yml",
+	//Primary service (Service to work with VS_Code)- 
+    //Main entry point for VS Code to connect to the container and provides IDE. 
+    "service": "cdevlopmentenvironment",
+    //Start following services when the container starts.
+    "runServices": [
+		"cdevlopmentenvironment"
+	],
+    //Specify workspace folder for primary service(container).
+    "workspaceFolder": "/workspace",
+    // Bind mount the current directory (.) to /workspace inside the container.
+    // This ensures that the project/program files remain on the host system, allowing 
+    // changes made inside the container to be reflected outside and vice versa.
+    // It also ensures that files persist even after the container is stopped or removed.
+    "mounts": [
+        "source=..,target=/workspace,type=bind" 
+      ],
+    //Stop container/containers when we close VS CODE.
+    "shutdownAction": "stopCompose",
+    
+    // Configure tool-specific properties.
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			"settings": { 
+                 // Specify path of lldb executable. Usefull for debugging.
+                "lldb.executable": "/usr/bin/lldb",
+
+                // End of line character is set to `\n`, which is the Unix-style line ending used by macOS and Linux.
+                // This may not align with the Windows default (`\r\n`).
+                "files.eol": "\n",
+
+                //Adjust the timeout period (in milliseconds) for code actions that are triggered automatically when saving a file.
+                //'code actions on save' can include features like automatic formatting, code fixes, and refactoring suggestions.
+                // Set to 2 seconds.
+                "editor.codeActionsOnSaveTimeout": 2000,
+                "editor.quickSuggestions": {
+                //Disable quick suggestions within comments.
+                "comments": false,
+                //Enable quick suggestions within strings (e.g., suggestions for string manipulation, completions, etc.).
+                "strings": true,
+                //Enable quick suggestions in other contexts, such as variable names, function calls, and more.
+                "other": true
+                }
+
+		    }
+	  },
+      // Specifies port mapping for communication between host (8000) and containers (8001).
+      "forwardPorts":["8000:8001"]
+    }
+}
