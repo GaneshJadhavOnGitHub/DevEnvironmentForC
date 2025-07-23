@@ -17,7 +17,7 @@ Steps to Set-up
    Otherwise open VS-Code Command pallete (f1) and execute
    following command DevContainers : Open Folder in container.
 
-6. Image get build and container will be spinned-up.
+6. The image is built, and the container is spun up.
 
 7.  Go to .devcontainer folder.
     cd .devcontainer
