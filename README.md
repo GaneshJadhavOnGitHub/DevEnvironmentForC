@@ -51,4 +51,28 @@ Steps to Set-up
     "program" property with the path of executable file that you wish to debug.
 
 
+__Repository Tree Structure__
+
+```
+├── .devcontainer
+    ├── .env
+    ├── Dockerfile
+    ├── devcontainer.json
+    ├── docker-compose.yml
+    └── post-create.sh
+├── .vscode
+    └── launch.json
+├── README.md
+├── System_Requirements.txt
+├── c_programs
+    └── hello_world
+    │   └── hello_world.c
+├── history
+    └── .zsh_history
+└── output
+    ├── Output1.png
+    └── Output2.png
+
+```
+
 
